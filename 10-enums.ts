@@ -9,5 +9,7 @@ enum SeatChoice {
   WINDOW, // we can also assign strings like WINDOW = "window" instead of numbers, and we'd have to assign values to all of the others.
   FOURTH, // because if we assign a number, it assumes the following are 1 number above. But if we assign to strings, it cannot assign and asks for us to assign the others.
 }
+
+const hcSeat = SeatChoice.AISLE;
 // A lot of options to change this but by default they are like 0, 1, 2 ,3. But we can change it to other values, or to strings.
 // Dunno if its important to learn this changes to 0, 1, 2, 3 tho, we'll see in the future.
