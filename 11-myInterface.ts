@@ -71,6 +71,8 @@ interface Admin extends Costumer {
 // kind of declaration. If you would like a heuristic, use interface until you need to use features from type".
 // Some words from the typescript docs
 
-// So that part where I typed "interface Costumer" again and added more properties to an already existing interface named Costumer, and that
-// interface Costumer got added more properties, that can't be done in "Type Aliases".
+// So that part where I typed "interface Costumer" again and added more properties to an already existing interface named Costumer, that can't
+// be done in "Type Aliases".
 // Thought being able to add methods (functions) was the main distinction but apparently not.
+
+export {};

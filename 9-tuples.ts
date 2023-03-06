@@ -25,3 +25,5 @@ const newUser: User = [112, "example@google.com"];
 // but there's something wrong about tuples:
 
 newUser.push("hello"); //this should give an error because you shouldn't be allowed to add an extra value to a tuple array
+
+export {};

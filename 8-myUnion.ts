@@ -66,3 +66,5 @@ let seatAllotment: "aisle" | "middle" | "window";
 
 seatAllotment = "aisle";
 // seatAllotment = "crew" we cant do this, which is helpful
+
+export {};

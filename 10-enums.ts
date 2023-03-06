@@ -13,3 +13,5 @@ enum SeatChoice {
 const hcSeat = SeatChoice.AISLE;
 // A lot of options to change this but by default they are like 0, 1, 2 ,3. But we can change it to other values, or to strings.
 // Dunno if its important to learn this changes to 0, 1, 2, 3 tho, we'll see in the future.
+
+export {};
