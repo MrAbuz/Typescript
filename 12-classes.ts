@@ -34,11 +34,11 @@ class User2 {
 //
 //
 //
-// Modifier keywords : PRIVATE, PUBLIC//
+// Modifier keywords : PRIVATE, PUBLIC
 //
 //
 //
-// Aparently there's 3 modifier keywords (private and public are 2), and we'll be learning the 3rd one after
+// There's 3 modifier keywords we'll learn (private and public are 2), and we'll be learning "protected" after
 
 // PRIVATE:
 // If we dont want anyone to access the city, we add the "private" keyword.
@@ -56,6 +56,8 @@ class User2 {
 //
 //
 //
+//
+//
 // Getters / Setters:
 //
 //
@@ -67,7 +69,7 @@ class User2 {
 
 class User3 {
   private _courseCount = 1; //since its private we cannot access this outside of this class, but we can inside of the class.
-
+  protected coursePayment = 10; // I explain the protected keyword in the "inherited" part down there
   private readonly city: string = "berlin";
   constructor(public email: string, public name: string) {}
 
@@ -106,5 +108,57 @@ class User3 {
 
 const hiteshh = new User3("h@h.com", "hitesh");
 // hiteshh.deleteToken(); //its private we can't
+
+//
+//
+//
+//
+//
+//
+// INHERITANCE +  "PROTECTED"
+//
+// Modifier keyword : PROTECTED
+//
+//
+//
+//
+// We have declared a class but we also want to use this classes as a parent for another class.
+// A lot of functionality is already written and we want to just add a tiny bit of functionality. In such cases inheritance is used.
+// We have the class user and we want to create a sub user, imagine there's a family member who also subscribes to our app.
+//
+// Keyword "protected" here comes into play. If we wanted to change a private property from User3 class like _courseCount, we couldn't, because
+// it is a private property. But we can with protected properties. Protected properties are just like private, they cannot be accessed from the
+// objects that are created from that class, but they can be accessed through that class (like private), and from any classes that inherit that
+// class (which private doesn't).
+//
+//
+//
+class SubUser extends User3 {
+  // Like this it will inherit the parent class.
+  // An object instantiated from SubUser will acquire all the properties from User
+  // But there's a problem. It cannot acquire the properties that are "private" in User, because they cannot be accessed from outside the class.
+  isFamily: boolean = true;
+  changeCoursePayment() {
+    this.coursePayment = 30;
+  }
+}
+
+// TLDR of everything around classes, public, private, readonly, protected.
+//
+// So from what I understand so far, when you are creating a class, you create a constructor that defines the properties that can be modified when
+// the object that is created from that class is instantiated.
+//    Then those properties are "public" by default (you can explicitly say so that the
+// code is more explicit), and by being public, they can be accessed from the objects created from that class through ex: hitesh.name, and they
+// can be inherited from other inherited classes.
+//      But if you say they are "private", they cannot be accessed in the objects that are created from
+// that class, they can only be used inside the class to create the logic. They can though be accessed through getters and setters, which are
+// normaly used for that, to manage the accessibility to those private variables. Who can access, what needs to happen so that there's access etc.
+// By being private, they wont be inherited in the inherited classes either.
+//      Then there's "readonly", which makes it so the variables are accessed
+// through hitesh.name for example in the objects that are created from that class, but they cannot be modified through like hitesh.name="john".
+//      Then there's "protected", which is really just like private, it cannot be accessed from the objects that are instantiated from that class,
+// only through getters and setters, but it can be accessed inside the class (like private can), and the difference from private is that it can be
+// accessed inside classes that are inherited from that class, like we did with SubUser. So it maintains all the properties of private, but allows
+// any inherited class to use it in their logic inside their class.
 
 export {};
