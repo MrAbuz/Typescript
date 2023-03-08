@@ -139,21 +139,24 @@ class SubUser extends User3 {
   // But there's a problem. It cannot acquire the properties that are "private" in User, because they cannot be accessed from outside the class.
   isFamily: boolean = true;
   changeCoursePayment() {
-    this.coursePayment = 30;
+    this.coursePayment = 30; //this one can be modified or accessed because coursePayment is "protected" in User3 instead of "private"
   }
 }
 
 // TLDR of everything around classes, public, private, readonly, protected.
 //
-// So from what I understand so far, when you are creating a class, you create a constructor that defines the properties that can be modified when
+//    Classes are blueprints for creating objects. We can define all the properties and methods that all objects created from this class will have.
+// Useful when you want to create some objects that share the same structure, but will have different values for each property. Instead of
+// creating a type/interface and then you'd have to type all the properties by hand anyway when creating the object, with classes you can just
+// say new User3(and inside just add the new values for the properties ).
+// When you are creating a class, you create a constructor that defines the properties that can be modified when
 // the object that is created from that class is instantiated.
-//    Then those properties are "public" by default (you can explicitly say so that the
-// code is more explicit), and by being public, they can be accessed from the objects created from that class through ex: hitesh.name, and they
-// can be inherited from other inherited classes.
+//    Then those properties are "public" by default (you can explicitly say so in order for the code to be more explicit, and by being public,
+// they can be accessed from the objects created from that class through ex: hitesh.name, and they can be inherited from other inherited classes.
 //      But if you say they are "private", they cannot be accessed in the objects that are created from
 // that class, they can only be used inside the class to create the logic. They can though be accessed through getters and setters, which are
 // normaly used for that, to manage the accessibility to those private variables. Who can access, what needs to happen so that there's access etc.
-// By being private, they wont be inherited in the inherited classes either.
+// By being private, they wont be accessed in the inherited classes either.
 //      Then there's "readonly", which makes it so the variables are accessed
 // through hitesh.name for example in the objects that are created from that class, but they cannot be modified through like hitesh.name="john".
 //      Then there's "protected", which is really just like private, it cannot be accessed from the objects that are instantiated from that class,

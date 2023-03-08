@@ -4,6 +4,7 @@
 // Job interviewers love to ask what's the use of abstract classes when interfaces are available.
 
 // With interfaces, we implemented interfaces in classes with the keyword "implement"
+// With abstract class, we use the keyword "extends"
 
 abstract class TakePhotos {
   constructor(public cameraMode: string, public filter: string) {}
@@ -28,8 +29,8 @@ class Facebook extends TakePhotos {
     public filter: string,
     public burst: number
   ) {
-    super(cameraMode, filter); //to create the constructor here, we need to pass this "super" keyword stating the values that are coming from the
-    //                           inherited abstract class constructor. This is a common synthax that we'll see
+    super(cameraMode, filter); //to create the constructor here, we need to pass this "super" keyword stating the properties that are coming from
+    //                           the inherited abstract class constructor. This is a common synthax that we'll see
   }
 
   getSepia(): void {
@@ -37,8 +38,7 @@ class Facebook extends TakePhotos {
   }
 }
 
-const hc2 = new Facebook("test", "Test", 3); // You can create objects from the class that is inheriting the abstract class, not from the
-//                                                abstract class itself
+const hc2 = new Facebook("test", "Test", 3);
 
 hc2.getReelTime(); //we can use this, and its logic is implemented in the abstract class, this is the difference to interfaces.
 
@@ -50,6 +50,9 @@ hc2.getReelTime(); //we can use this, and its logic is implemented in the abstra
 // We cannot create an object directly from an abstract class. It has to be from a class that is inheriting the abstract class.
 // They help to define the class that is inheriting them to get a certain structure and compulsory things that they need to add.
 // If you want them to add a method but not define it, you add the keyword "abstract"
-// But the main difference is this, is that you can define the logic of a method to give them a feature by default.
+// But the main difference is that you can define the logic of a method inside the abstract class to give the class that is extending
+// it a feature by default.
+// Interfaces only state that you need to have certain properties and methods, abstract classes allow you to define those and the class
+// will have those defined by default.
 
 export {};
