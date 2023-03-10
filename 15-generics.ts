@@ -79,8 +79,6 @@ const getMoreSearchProducts = <T>(products: T[]): T => {
 // <T,> He says we'll see some codebases use this. This comma is normally used in react projects etc to mention that this is not an HTML tag
 // like <h1> or <p>, but rather that its generic. Makes sense because react is where you use html with js code, and <T> could be confusing.
 
-export {};
-
 //
 //
 //
@@ -109,10 +107,10 @@ function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
 
 let x = { a: 1, b: 2, c: 3, d: 4 };
 
-// This one will take 2 input generics, we can use as much as we want to take as an input
+// This one will take 2 input generics, we can take as much inputs as we want
 // From my understanding this means that we can create a type, in this case Key, that is constrained by the type Type, so that (in this example)
 // its value will always need to be whatever keys values the data from type Type has. So the type is constrained by another type even tho
-// we don't know what the other type is.
+// we don't know what the other type is. In this case the keys should be between 1-4 and reject keys that are off that range, think this is it.
 
 getProperty(x, "a");
 //getProperty(x, "m");    //Argument of type '"m"' is not assignable to parameter of type '"a" | "b" | "c" | "d"'.
@@ -146,7 +144,7 @@ function anotherFunction<T, U extends number>(valOne: T, valTwo: U): object {
 //
 //
 // We're gonna use an example of selling courses and quizes, two sellable items.
-// We want to create a class where could take a quizz, or a course, and we want to create some methods that work for both of them
+// We want to create a class that could take a quizz, or a course, and we want to create some methods that work for both of them.
 //
 interface Quiz {
   name: string;
@@ -161,9 +159,12 @@ interface Course {
 
 class Sellable<T> {
   // this is a generic class that takes a generic argument, not only Quizes or Courses, but we can take other products aswell.
+  // this example actually looks nice
   public cart: T[] = [];
 
   addToCart(product: T) {
     this.cart.push(product);
   }
 }
+
+export {};
